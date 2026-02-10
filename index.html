@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouna Al Ajlan — Wedding Design | May 2, 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --sand: #dbc096;
+            --sand-light: #E8DDCF;
+            --camel: #D6C2A8;
+            --warm-white: #FDFCFA;
+            --stone: #C4B49A;
+            --taupe: #A69076;
+            --charcoal: #3D3D3D;
+            --soft-gray: #8B8379;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--warm-white);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .serif { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-weight: 300;
+        }
+        
+        /* Logo - Fixed */
+        .logo-fixed {
+            position: fixed;
+            top: 32px;
+            left: 32px;
+            z-index: 1000;
+            height: 45px;
+            width: auto;
+            filter: brightness(0.2);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-fixed.light {
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-fixed { height: 38px; top: 20px; left: 20px; }
+        }
+
+        /* Navigation Dots */
+        .nav-dots {
+            position: fixed;
+            right: 32px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .nav-dot.active {
+            background: var(--taupe);
+            transform: scale(1.5);
+        }
+        
+        .nav-dot:hover {
+            background: var(--sand);
+        }
+
+        /* Hero Section - Split Design */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero { grid-template-columns: 45% 55%; }
+        }
+
+        .hero-content-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, var(--sand-light) 0%, var(--warm-white) 100%);
+            position: relative;
+        }
+        
+        .hero-content-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4));
+            pointer-events: none;
+        }
+
+        .hero-image-side {
+            position: relative;
+            min-height: 60vh;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-image-side { min-height: 100vh; }
+        }
+
+        .hero-image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-label {
+            color: var(--taupe);
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 300;
+            line-height: 1;
+            margin-bottom: 20px;
+            color: var(--charcoal);
+            letter-spacing: -1px;
+        }
+
+        .bride-name {
+            font-size: clamp(32px, 5vw, 56px);
+            color: var(--sand);
+            font-style: italic;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .hero-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--soft-gray);
+            margin-top: 32px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 15px;
+            color: var(--soft-gray);
+            max-width: 400px;
+            margin-top: 24px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .designer-credit {
+            margin-top: 60px;
+        }
+
+        .designer-credit p:first-child {
+            color: var(--taupe);
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .designer-credit p:last-child {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 22px;
+            color: var(--charcoal);
+            font-weight: 400;
+        }
+
+        /* Floating Badge */
+        .floating-badge {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            background: white;
+            padding: 24px 32px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            z-index: 10;
+            text-align: center;
+            border: 1px solid var(--sand-light);
+        }
+        
+        @media (max-width: 1024px) {
+            .floating-badge {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+            }
+        }
+        
+        .badge-label {
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--taupe);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .badge-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: var(--sand);
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Sections */
+        section {
+            padding: 120px 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            color: var(--taupe);
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 500;
+            display: inline-block;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--sand);
+        }
+
+        h2 {
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 300;
+            color: var(--charcoal);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .concept-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(22px, 2.5vw, 28px);
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--soft-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Color Palette - Organic Shapes */
+        .palette-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 0;
+            max-width: 900px;
+            margin: 60px auto 0;
+            height: 300px;
+        }
+
+        .palette-item {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 30px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .palette-item:nth-child(odd) {
+            height: 85%;
+        }
+
+        .palette-item:nth-child(even) {
+            height: 100%;
+        }
+
+        .palette-item:hover {
+            flex: 1.3;
+        }
+
+        .palette-color {
+            position: absolute;
+            inset: 0;
+            opacity: 0.9;
+        }
+
+        .palette-item:hover .palette-color {
+            opacity: 1;
+        }
+
+        .palette-info {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .palette-item:hover .palette-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .palette-name {
+            font-size: 11px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .palette-hex {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 12px;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Masonry Gallery */
+        .masonry-gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .masonry-gallery { 
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry-gallery { 
+                grid-template-columns: repeat(12, 1fr);
+                grid-auto-rows: 350px;
+            }
+        }
+
+        .masonry-item {
+            position: relative;
+            overflow: hidden;
+            background: var(--sand-light);
+        }
+
+        @media (min-width: 1024px) {
+            .masonry-item:nth-child(1) { grid-column: span 7; grid-row: span 2; }
+            .masonry-item:nth-child(2) { grid-column: span 5; }
+            .masonry-item:nth-child(3) { grid-column: span 5; }
+            .masonry-item:nth-child(4) { grid-column: span 6; }
+            .masonry-item:nth-child(5) { grid-column: span 6; }
+            .masonry-item:nth-child(6) { grid-column: span 12; height: 500px; }
+        }
+
+        .masonry-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .masonry-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(166,144,118,0.9) 0%, transparent 60%);
+            opacity: 0;
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+        }
+
+        .masonry-item:hover .masonry-overlay {
+            opacity: 1;
+        }
+
+        .masonry-title {
+            font-family: 'Cormorant Garamond', serif;
+            color: white;
+            font-size: 28px;
+            font-weight: 300;
+            font-style: italic;
+            transform: translateY(20px);
+            transition: transform 0.5s ease;
+        }
+
+        .masonry-item:hover .masonry-title {
+            transform: translateY(0);
+        }
+
+        /* Details Strip */
+        .details-strip {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            padding: 60px 24px;
+            background: linear-gradient(to right, transparent, var(--sand-light), transparent);
+            margin: 80px 0;
+            flex-wrap: wrap;
+        }
+
+        .detail-item {
+            text-align: center;
+        }
+
+        .detail-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: var(--sand);
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .detail-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--taupe);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            padding: 100px 24px;
+            background: var(--sand);
+            text-align: center;
+            position: relative;
+            color: white;
+        }
+
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+            margin-bottom: 40px;
+        }
+
+        .footer-bride {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(40px, 6vw, 64px);
+            margin-bottom: 12px;
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        .footer-date {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .footer-designer p:first-child {
+            color: rgba(255,255,255,0.7);
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .footer-designer p:last-child {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 26px;
+            color: white;
+        }
+
+        .footer-role {
+            color: rgba(255,255,255,0.6);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 32px;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--taupe);
+            color: white;
+            padding: 16px 32px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            border: 1px solid var(--sand);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Logo -->
+    <img src="https://i.imgur.com/uJqy10F.jpeg" alt="Logo" class="logo-fixed" id="mainLogo">
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" onclick="scrollToSection(0)"></div>
+        <div class="nav-dot" onclick="scrollToSection(1)"></div>
+        <div class="nav-dot" onclick="scrollToSection(2)"></div>
+    </div>
+
+    <!-- HERO SECTION - Split Layout -->
+    <section class="hero" id="section-0" style="padding: 0; max-width: 100%;">
+        <div class="hero-content-side">
+            <p class="hero-label fade-in">Wedding Design Proposal</p>
+            
+            <h1 class="fade-in" style="transition-delay: 0.2s;">
+                <span class="bride-name serif">Mouna<br>Al Ajlan</span>
+            </h1>
+            
+            <p class="hero-subtitle fade-in" style="transition-delay: 0.4s;">
+                A celebration of warmth, elegance, and timeless beauty in soft tones of sand and light.
+            </p>
+            
+            <p class="hero-date fade-in" style="transition-delay: 0.5s;">May 2, 2025</p>
+            
+            <div class="designer-credit fade-in" style="transition-delay: 0.6s;">
+                <p>Designed by</p>
+                <p>Mohamed Tunis</p>
+            </div>
+        </div>
+        
+        <div class="hero-image-side">
+            <img src="https://i.imgur.com/ESppS3i.jpeg" alt="Mouna Al Ajlan Wedding">
+            
+            <div class="floating-badge fade-in" style="transition-delay: 0.8s;">
+                <div class="badge-label">Save the Date</div>
+                <div class="badge-date">02 . 05 . 2025</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONCEPT & PALETTE -->
+    <section id="section-1">
+        <div class="section-header">
+            <p class="section-label fade-in">Design Philosophy</p>
+            <h2 class="fade-in serif">Desert Bloom</h2>
+            <p class="concept-text fade-in">
+                Inspired by the gentle warmth of desert sands at golden hour. A palette of soft camel, warm sand, and creamy whites creates an atmosphere of serene luxury and natural grace.
+            </p>
+        </div>
+
+        <div class="palette-container">
+            <div class="palette-item fade-in" onclick="copyColor('#dbc096')">
+                <div class="palette-color" style="background: #dbc096;"></div>
+                <div class="palette-info">
+                    <p class="palette-name">Warm Sand</p>
+                    <p class="palette-hex">#dbc096</p>
+                </div>
+            </div>
+            
+            <div class="palette-item fade-in" onclick="copyColor('#D6C2A8')" style="transition-delay: 0.1s;">
+                <div class="palette-color" style="background: #D6C2A8;"></div>
+                <div class="palette-info">
+                    <p class="palette-name">Camel</p>
+                    <p class="palette-hex">#D6C2A8</p>
+                </div>
+            </div>
+            
+            <div class="palette-item fade-in" onclick="copyColor('#E8DDCF')" style="transition-delay: 0.2s;">
+                <div class="palette-color" style="background: #E8DDCF;"></div>
+                <div class="palette-info">
+                    <p class="palette-name">Cream</p>
+                    <p class="palette-hex">#E8DDCF</p>
+                </div>
+            </div>
+            
+            <div class="palette-item fade-in" onclick="copyColor('#A69076')" style="transition-delay: 0.3s;">
+                <div class="palette-color" style="background: #A69076;"></div>
+                <div class="palette-info">
+                    <p class="palette-name">Taupe</p>
+                    <p class="palette-hex">#A69076</p>
+                </div>
+            </div>
+            
+            <div class="palette-item fade-in" onclick="copyColor('#C4B49A')" style="transition-delay: 0.4s;">
+                <div class="palette-color" style="background: #C4B49A;"></div>
+                <div class="palette-info">
+                    <p class="palette-name">Stone</p>
+                    <p class="palette-hex">#C4B49A</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILS STRIP -->
+    <div class="details-strip">
+        <div class="detail-item fade-in">
+            <div class="detail-number">02</div>
+            <div class="detail-label">May 2025</div>
+        </div>
+        <div class="detail-item fade-in" style="transition-delay: 0.1s;">
+            <div class="detail-number">05</div>
+            <div class="detail-label">Colors</div>
+        </div>
+        <div class="detail-item fade-in" style="transition-delay: 0.2s;">
+            <div class="detail-number">01</div>
+            <div class="detail-label">Vision</div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <section id="section-2" style="padding: 0 24px; max-width: 100%;">
+        <div class="masonry-gallery">
+            <div class="masonry-item fade-in">
+                <img src="https://i.imgur.com/ESppS3i.jpeg" alt="Mouna Al Ajlan Wedding" loading="lazy">
+                <div class="masonry-overlay">
+                    <p class="masonry-title">The Venue</p>
+                </div>
+            </div>
+            
+            <div class="masonry-item fade-in" style="transition-delay: 0.1s;">
+                <img src="https://i.imgur.com/UZ0YKqS.jpeg" alt="Wedding Details" loading="lazy">
+                <div class="masonry-overlay">
+                    <p class="masonry-title">Soft Light</p>
+                </div>
+            </div>
+            
+            <div class="masonry-item fade-in" style="transition-delay: 0.2s;">
+                <img src="https://i.imgur.com/16Nzb7O.jpeg" alt="Floral Design" loading="lazy">
+                <div class="masonry-overlay">
+                    <p class="masonry-title">Natural Beauty</p>
+                </div>
+            </div>
+            
+            <div class="masonry-item fade-in" style="transition-delay: 0.1s;">
+                <img src="https://i.imgur.com/JLAYCT3.jpeg" alt="Wedding Atmosphere" loading="lazy">
+                <div class="masonry-overlay">
+                    <p class="masonry-title">Golden Hour</p>
+                </div>
+            </div>
+            
+            <div class="masonry-item fade-in" style="transition-delay: 0.2s;">
+                <img src="https://i.imgur.com/O9mRENA.jpeg" alt="Wedding Moments" loading="lazy">
+                <div class="masonry-overlay">
+                    <p class="masonry-title">Intimate Moments</p>
+                </div>
+            </div>
+            
+            <div class="masonry-item fade-in" style="transition-delay: 0.3s;">
+                <img src="https://i.imgur.com/d4h4Hlv.jpeg" alt="Wedding Finale" loading="lazy">
+                <div class="masonry-overlay">
+                    <p class="masonry-title">Forever Begins</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <img src="https://i.imgur.com/uJqy10F.jpeg" alt="Logo" class="footer-logo">
+        
+        <p class="footer-bride serif">Mouna Al Ajlan</p>
+        <p class="footer-date">May 2, 2025</p>
+        
+        <div class="footer-designer">
+            <p>Designed by</p>
+            <p>Mohamed Tunis</p>
+        </div>
+        
+        <p class="footer-role">Wedding Design & Styling</p>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Color copied to clipboard</div>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Copy color function
+        function copyColor(hex) {
+            navigator.clipboard.writeText(hex).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2000);
+            });
+        }
+
+        // Navigation dots
+        const sections = document.querySelectorAll('section, .details-strip');
+        const dots = document.querySelectorAll('.nav-dot');
+        
+        function scrollToSection(index) {
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Update active dot on scroll
+        window.addEventListener('scroll', () => {
+            let current = 0;
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 500) {
+                    current = index;
+                }
+            });
+            
+            dots.forEach((dot, index) => {
+                if (index === current) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+            
+            // Logo color change based on background
+            const logo = document.getElementById('mainLogo');
+            if (current === 0) {
+                logo.classList.add('light');
+            } else {
+                logo.classList.remove('light');
+            }
+        });
+    </script>
+
+</body>
+</html>
